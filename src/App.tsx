@@ -96,6 +96,35 @@ export default function App() {
  }
 
 
+ const onChangeItem =(itemNumber : number) =>{
+  if (gameWinner) {
+    return Snackbar.show({
+      text: gameWinner,
+      backgroundColor:'#000000',
+      textColor:'#FFFFFF'
+    })
+    
+  }
+
+  if (gameState[itemNumber] === 'empty') {
+    gameState[itemNumber] = isCross? 'cross': 'circle'
+    setIsCross(!isCross)
+    
+  }
+  else{
+    return Snackbar.show({
+      text:'position is already filled',
+      backgroundColor:'red',
+      textColor:'white',
+    })
+  }
+
+ checkWinner()
+
+
+ }
+
+
 
   return (
    <SafeAreaView>
